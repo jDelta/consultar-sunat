@@ -1,12 +1,7 @@
-# Consultar Sunat
-Módulo para realizar consultas a SUNAT mediante el numero de RUC o DNI
+<?php
 
-# Instalación:
-```ruby
-composer require jdelta/consultar-sunat
-````
+require __DIR__ . '/vendor/autoload.php';
 
-```php
 use ConsultarSunat\SearchService;
 
 $service = new SearchService();
@@ -30,7 +25,3 @@ if ($result2->success == true) {
 // Mostrar en formato XML/JSON
 echo $result1->json();
 echo $result1->xml('empresa');
-````
-# Creditos:
-Josue Mazco Puma
-https://github.com/jossmp/sunatphp
