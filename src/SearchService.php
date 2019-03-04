@@ -58,7 +58,9 @@ class SearchService {
             $url = "http://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias";
             $page = $this->cc->send($url, $data);
             if ($this->cc->getHttpStatus() == 200 && $numRand != "") {
-                //RazonSocial
+                // Result
+                $rtn = [];
+                // RazonSocial
                 $patron = '/<input type="hidden" name="desRuc" value="(.*)">/';
                 $output = preg_match_all($patron, $page, $matches, PREG_SET_ORDER);
                 if (isset($matches[0])) {
@@ -69,7 +71,7 @@ class SearchService {
                     );
                 }
 
-                //Telefono
+                // Telefono
                 $patron = '/<td class="bgn" colspan=1>Tel&eacute;fono\(s\):<\/td>[ ]*-->\r\n<!--\t[ ]*<td class="bg" colspan=1>(.*)<\/td>/';
                 $output = preg_match_all($patron, $page, $matches, PREG_SET_ORDER);
                 if (isset($matches[0])) {
